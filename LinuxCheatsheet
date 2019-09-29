@@ -1,0 +1,117 @@
+How to extract a file to a specific directory:
+
+Type man tar for more information, but this command should do the trick:
+
+tar -xvzf community_images.tar.gz
+To explain a little further, tar collected all the files into one package, community_images.tar. The gzip program applied compression, hence the gz extension. So the command does a couple things:
+
+f: this must be the last flag of the command, and the tar file must be immediately after. It tells tar the name and path of the compressed file.
+z: tells tar to decompress the archive using gzip
+x: tar can collect files or extract them. x does the latter.
+v: makes tar talk a lot. Verbose output shows you all the files being extracted.
+
+EXAMPLE:
+	
+	$ sudo tar -xvzf ideaIU-2019.1.3-no-jbr.tar.gz -C /opt/
+
+
+Using grep
+https://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples
+
+	$ grep "string" FILE_PATTERN
+
+
+Change permissions
+sudo chmod +777 R /<directory name>
+
+Check space used by a directory: d_isk u_se
+
+	$ du -sh ~/source/
+
+
+Check usage of d_isk f_ile systems
+df - report file system disk space usage
+	
+	$ df -ah
+
+ifconfig - configure a network interface
+	$ ifconfig 
+
+ip - show / manipulate routing, network devices, interfaces and tunnels
+
+	$ ip addr
+	$ ip addr show
+	$ ip addr show lo
+	$ ip addr wlp2s0
+
+Check kernel version, machine details, other stuff
+	$ uname -a
+	$ uname -v
+	$ uname -m
+
+Monotor system services
+	$ service udev status
+	$ systemctl status udev
+
+Monitor network connections, routing tables interface stats, maszuerade connections, and multicast memberships
+[--tcp|-t] 
+[--udp|-u] 
+[--listening|-l] 
+[--program|-p] 
+[--verbose|-v] 
+[--continuous|-c] 
+[--numeric|-n]
+
+	$ sudo netstat -tulpn
+
+Search all processes for anything wth nginx in the name
+	$ ps aux | grep nginx
+
+
+See the processes
+	$ top
+
+See the processes htop - interactive process viewer - options to kill 
+	$ htop
+
+Process by id or by name:
+	$ pidof firefox
+	$ kill <pid of firefox>
+
+Mount a new device like a hardrive, usb stick
+
+	$ ls /mnt
+
+mount - mount a filesystem
+	
+	$ mount /dev/sda2
+
+Mount at boot
+	@ cat /etc/fstab
+
+Look at a manual with man
+	$ man ps
+
+Searching and locating
+	$ locate source
+	$ locate "source"
+	$ locate -n 10 "*.sql"
+	$ locate -n 20 -i "sUMmer*.Html"
+	$ locate -r "^/home/thuc/.*ssh.*$"
+
+finding (slower than locate)
+	$ find -name "name-of-file-or-directory"
+
+
+Run a process in the background? Append & to the command. There are other ways
+
+	$ somecommand & 
+
+Now kill it with it's ID:
+	$ jobs
+	[jobid] job name, other stuff
+	$ kill %jobid
+
+https://unix.stackexchange.com/questions/104821/how-to-terminate-a-background-process
+
+

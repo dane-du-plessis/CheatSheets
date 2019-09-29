@@ -1,0 +1,30 @@
+## https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+
+
+docker container run -it alpine sh
+
+control - P - Q -> gets you out of the shell
+
+docker images -a
+docker images -a |  grep "pattern"
+
+docker system prune
+docker system prune -a
+
+docker rmi Image Image
+
+
+
+docker ps -a
+docker rm -v container_name
+
+docker ps -a -f status=exited
+docker rm $(docker ps -a -f status=exited -q)
+
+docker ps -a -f status=exited -f status=created
+docker rm $(docker ps -a -f status=exited -f status=created -q)
+
+docker ps -a |  grep "pattern”
+docker ps -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
+
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
